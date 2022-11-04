@@ -4,7 +4,25 @@ function SupplyPoint(tariff, invoicedAmount, power, neighbors) {
     this.tariff = tariff;
     this.invoicedAmount = invoicedAmount;
     this.power = power;
-    this.neighbors = neighbors;
+    this.neighborIds = neighbors;
+
+    this.neighbors = [];
+}
+
+SupplyPoint.prototype.fetchNeighbors = function () {
+    this.neighborIds.forEach(neighbor => {
+        SupplyPoint.fetch().then(data => {
+            const supplyPointInfo = data.find(supplyPoint => supplyPoint.cups === neighbor);
+            this.neighbors.push(SupplyPoint.fromObject(supplyPointInfo));
+        });
+    })
+}
+
+SupplyPoint.fromObject = (object) => {
+    if (object)
+        return new SupplyPoint(object.tariff, object.invoiced_amount, object.power, object.neighbors);
+
+    return null;
 }
 
 SupplyPoint.fetch = () => {

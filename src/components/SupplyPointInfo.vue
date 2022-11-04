@@ -1,10 +1,11 @@
 <template>
-	<ul v-if="supplyPoint">
-		<li>{{ supplyPoint.tariff }}</li>
-		<li>{{ supplyPoint.invoicedAmount }}</li>
-		<li>{{ supplyPoint.power }}</li>
-		<li>{{ supplyPoint.neighbors }}</li>
-	</ul>
+	<div class="info-container" v-if="supplyPoint">
+		<p class="title">Supply point</p>
+		<hr>
+		<p><span class="title">Tariff: </span>{{ supplyPoint.tariff }}</p>
+		<p><span class="title">Invoiced amount: </span>{{ supplyPoint.invoicedAmount }}</p>
+		<p><span class="title">Power: </span>{{ supplyPoint.power.p1 }} / {{ supplyPoint.power.p2 }}</p>
+	</div>
 </template>
 
 <script>

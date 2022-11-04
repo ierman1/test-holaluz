@@ -1,10 +1,11 @@
 <template>
-	<ul v-if="client">
-		<li>{{ client.fullName }}</li>
-		<li>{{ client.address }}</li>
-		<li>{{ client.role }}</li>
-		<li>{{ client.buildingType }}</li>
-	</ul>
+	<div class="info-container" v-if="client">
+		<p class="title">{{ client.fullName }}</p>
+		<hr>
+		<p><span class="title">Address: </span>{{ client.address }}</p>
+		<p><span class="title">Role: </span>{{ client.role }}</p>
+		<p><span class="title">Building type: </span>{{ client.buildingType }}</p>
+	</div>
 </template>
 
 <script>
